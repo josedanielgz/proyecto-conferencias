@@ -1,0 +1,249 @@
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+  float: left;
+  padding: 0.9rem;
+  /*border: 0.3vw solid black;*/
+}
+
+.row::after {
+
+	content:"";
+	clear:both;
+	display:table;
+}
+
+.row-flex{
+
+	display:flex;
+	flex-wrap:wrap;
+	flex-direction:row;
+}
+
+.col-flex {
+
+	display:flex;
+	flex-direction:column;
+	flex-wrap:wrap;
+
+}
+
+* {
+
+	box-sizing:border-box;
+}
+
+html {
+
+	font-size:1.2em;
+	font-family: "Open Sans", sans-serif;
+}
+
+p {
+	font-family:"Inconsolata","Consolas", serif;
+}
+
+header#main {
+
+	padding:0.4rem;
+	background-image:linear-gradient(90deg, #ff1a1a, #ff6600);
+	text-align:center;
+	font-size:1.3rem;
+	text-decoration:underline overline #ff0066;
+	text-decoration-style:dashed;
+	/* X-axis, Y-axis, Blur and color of the shadow */
+	/*REMINDER: The border radius are set:*/
+	/*Top-left Top-right Bottom-Right Bottom-Left*/
+	border-radius:2vw 2vw 0 0;
+}
+
+h1 {
+	/*background:-webkit-linear-gradient(#cc99ff,#9900e6);*/
+	/*-webkit-background-clip: text;*/
+	/*color:transparent;*/
+	color:#9900e6;
+	text-shadow:0.2rem  0.25rem  0.3rem black;
+
+}
+
+ul.row-flex {
+
+	list-style-type:none;
+	flex-grow:1;
+	align-items:center;
+	justify-content:space-around;
+	padding:0;
+	margin:0;
+}
+
+li.link {
+
+	border-radius:2vw;
+	margin:1.2vh 0 1.2vh 0;
+}
+
+li.link a{
+
+	background-image:linear-gradient(45deg,#33ccff,#ccffcc);
+	padding:0.7vw;
+	font-size:1.2rem;
+	text-align:center;
+	text-decoration:none;
+	border-radius:2vw;
+	border:0.1rem solid black;
+
+}
+
+li.link a:hover{
+
+	color:white;
+	background-image:linear-gradient(45deg,#ffb3b3,#ff0066);
+	font-weight:bold;
+	border-color:white;
+}
+
+li.link a:active{
+
+	border-color:blue;
+	color:blue;
+}
+
+
+.small-portrait{
+
+	/*position:relative;*/
+	float:left;
+	margin:0.3rem;
+	width:8rem;
+	height:10rem;
+	border:0.2rem solid red;
+
+}
+
+article.col-8{
+
+	background:-webkit-linear-gradient(135deg,yellow,white);
+}
+
+nav.col-4{
+
+	background:-webkit-linear-gradient(-135deg,#A0E2FC,#246179);
+
+}
+
+ul.col-flex{
+
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	justify-content:space-around;
+	align-items:stretch;
+	flex:1;
+
+}
+
+li.normal{
+
+	margin-top:0.7rem;
+
+}
+
+li.normal span{
+
+	background-image:-webkit-linear-gradient(60deg,red,#FF6090);
+	color:white;
+	padding:0.4rem;
+	display:inline-block;
+	width:100%;
+
+}
+
+footer{
+
+	background-image:-webkit-linear-gradient(#16BF5F,#AAFCB2);
+	border-radius:0 0 2vw 2vw;
+	text-align:center;
+	color:#010440;
+	text-shadow:0.1rem 0.1rem 0.2rem #7a18ff;
+	font-weight:bold;
+}
+
+#main-table{
+	align-items:stretch;
+	justify-content:space-around;
+	margin:auto;
+	background-image:linear-gradient(45deg, #4DE9D4, #A4F89F);
+
+}
+
+table,th,td{
+
+	border-collapse:collapse;
+	/*border:0.12rem solid black;*/
+}
+
+th,td{
+
+	padding:0.5rem;
+	border:0.12rem solid black;
+}
+
+th{
+
+	font-weight:bold;
+	color:#74D3DC;
+	background:#585E5F;
+}
+
+td {
+
+	background:white;
+}
+
+/*Taken from https://stackoverflow.com/questions/4932181/rounded-table-corners-css-only*/
+
+th:first-of-type {
+  border-top-left-radius: 0.9rem;
+}
+th:last-of-type {
+  border-top-right-radius: 0.9rem;
+}
+tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 0.9rem;
+}
+tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 0.9rem;
+}
+
+@media only screen and (max-width:800px){
+	[class*="col-"] {
+		width:100%;
+	}
+
+	ul.row-flex {
+
+		flex-direction:column;
+		align-items:stretch;
+	}
+
+	li.link a {
+
+		/*For whatever reason block and inline*/
+		/*block seems to work the same for these*/
+		/*<a> elements*/
+		display:inline-block;
+		/*display:block;*/
+		width:100%;
+	}
+}
