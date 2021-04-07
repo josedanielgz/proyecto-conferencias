@@ -69,8 +69,8 @@ header#main {
 }
 
 h1 {
-	/*background:-webkit-linear-gradient(#cc99ff,#9900e6);*/
-	/*-webkit-background-clip: text;*/
+	/*background:linear-gradient(#cc99ff,#9900e6);*/
+	/*background-clip: text;*/
 	/*color:transparent;*/
 	color:#e6e6e6;
 	text-shadow:0.2rem  0.25rem  0.3rem black;
@@ -100,7 +100,7 @@ li.link a{
 	font-size:1.2rem;
 	text-align:center;
 	text-decoration:none;
-	border-radius:2vw;
+	border-radius:0.5vw;
 	border:0.1rem solid black;
 
 }
@@ -133,12 +133,12 @@ li.link a:active{
 
 article.col-8{
 
-	background:-webkit-linear-gradient(135deg,yellow,white);
+	background:linear-gradient(135deg,yellow,white);
 }
 
 nav.col-4{
 
-	background:-webkit-linear-gradient(-135deg,#A0E2FC,#246179);
+	background:linear-gradient(-135deg,#A0E2FC,#246179);
 
 }
 
@@ -161,7 +161,7 @@ li.normal{
 
 li.normal span{
 
-	background-image:-webkit-linear-gradient(60deg,red,#FF6090);
+	background-image:linear-gradient(60deg,red,#FF6090);
 	color:white;
 	padding:0.4rem;
 	display:inline-block;
@@ -171,7 +171,7 @@ li.normal span{
 
 footer{
 
-	background-image:-webkit-linear-gradient(#16BF5F,#AAFCB2);
+	background-image:linear-gradient(#16BF5F,#AAFCB2);
 	border-radius:0 0 2vw 2vw;
 	text-align:center;
 	color:#010440;
