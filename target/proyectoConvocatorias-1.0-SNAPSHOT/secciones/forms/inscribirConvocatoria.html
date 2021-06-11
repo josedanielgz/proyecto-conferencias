@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+FORMULARIO PROVISIONAL PARA INSCRIBIR UN USUARIO EN UNA CONVOCATORIA. 
+-->
+<html>
+    <head>
+        <title>Inscríbete en una convocatoria</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="../../vendor/jquery/jquery.min.js"></script>
+        <script src="../../js/ajax/inscripcion.js"></script>
+    </head>
+    <body>
+        <h1>Inscripción en una convocatoria</h1>
+        <!--https://stackoverflow.com/a/3350351-->
+        <!--La petición AJAX se realiza mediante una llamada a una función JS que sobreescribe el evento convencional de los formularios-->
+        <form id="subir_archivo" enctype="multipart/form-data" method="post" onsubmit="inscripcionConvocatoria(event)">
+            <label>Usuario: </label><input type="number" id="documento"><br>
+            <label>Convocatoria: </label><input type="text" id="convocatoria"><br>
+            <input id="ajaxfile" type="file"/> <br><br>
+            <input type="submit" value="Registrar inscripción">
+        </form>
+        <div id="resultado"></div>
+        <a href="../../">Volver al inicio</a>
+    </body>
+</html>
