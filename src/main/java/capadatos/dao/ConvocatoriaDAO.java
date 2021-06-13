@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -43,7 +45,6 @@ public class ConvocatoriaDAO {
     }
 
     public Convocatoria buscarConvocatoria(String codigo) throws Exception {
-        Convocatoria c = new Convocatoria();
 
         Conexion con = new Conexion();
         Connection conexion = con.conectar("convocatoriaDAO.buscarConvocatoria()");
@@ -51,8 +52,9 @@ public class ConvocatoriaDAO {
         PreparedStatement ps = conexion.prepareStatement(sql);
         ps.setString(1, codigo);
         ResultSet rst = ps.executeQuery();
-        while (rst.next()) {
 
+        if (rst.next()) {
+            Convocatoria c = new Convocatoria();
             c.setId(rst.getString(1));
             c.setNombre(rst.getString(2));
             c.setDescripcion(rst.getString(3));
@@ -61,6 +63,14 @@ public class ConvocatoriaDAO {
             c.setFecha_final(rst.getDate(6).toLocalDate());
             c.setEstado(rst.getString(7));
             c.setRequisito(rst.getString(8));
+            rst.close();
+            ps.close();
+            conexion.close();
+
+            rst = null;
+            ps = null;
+            conexion = null;
+            return c;
 
         }
 
@@ -71,7 +81,7 @@ public class ConvocatoriaDAO {
         rst = null;
         ps = null;
         conexion = null;
-        return c;
+        return null;
     }
 
     public List<Convocatoria> buscarConvocatorias() throws Exception {
@@ -108,16 +118,20 @@ public class ConvocatoriaDAO {
         return convocatoria;
     }
 
-    public static void main(String[] args) {
-        try {
-            ConvocatoriaDAO n = new ConvocatoriaDAO();
-            List<Convocatoria> c =n.buscarConvocatorias();
-            for(Convocatoria x : c){
-                
-                System.out.println(x);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(ConvocatoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public static void main(String[] args) throws Exception {
+        ConvocatoriaDAO n = new ConvocatoriaDAO();
+        Convocatoria c = new Convocatoria("3", "Convocatoria 3", "Una descripción", LocalDate.now(), LocalDate.of(2021, Month.MARCH, 11), LocalDate.of(2021, Month.MARCH, 13), "Abierta", "");
+        System.out.println(n.buscarConvocatoria("3"));
+
+//        try {
+//            ConvocatoriaDAO n = new ConvocatoriaDAO();
+//            List<Convocatoria> c =n.buscarConvocatorias();
+//            for(Convocatoria x : c){
+//                
+//                System.out.println(x);
+//            }
+//        } catch (Exception ex) {
+//            Logger.getLogger(ConvocatoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 }
