@@ -40,7 +40,10 @@
         <link href="../../css/dataTable/buttons.dataTables.min.css" rel="stylesheet">
         -->
 
+        <!--https://github.com/jayanthbabu123/how-to-convert-html-web-pages-to-pdf-in-javascript/blob/master/pdf.html-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
         <script src="../../js/ajax/convocatoria.js"></script>
+
     </head>
     <body>
 
@@ -75,7 +78,7 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container" id="imprimir">
             <table class="table table-stripped">
                 <thead>
                     <tr>
@@ -105,20 +108,13 @@
                     %>
                 </tbody>
             </table>
-
-            <form id="bajar_csv" onsubmit="descargarCSV(event)">
-                <input type="submit" value="Descargar como CSV">
-            </form>
-
-            <div id="resultado"></div>
-
-            <!--
-                        <div>
-                            Este es el tamaño del arreglo <%//convocatorias.size()%>
-                        </div>
-            -->
         </div>
 
+        <button class="btn btn-primary" id="descargarCSV"> Descargar CSV</button>
+        <button class="btn btn-primary" id="descargarPDF"> Descargar PDF</button>
+
+
+        <div id="resultado"></div>
         <!--
                 <script src="js/dataTable/jquery.dataTables.min.js"></script>
                 <script src="js/dataTable/dataTables.buttons.min.js"></script>

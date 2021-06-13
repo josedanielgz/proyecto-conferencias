@@ -24,7 +24,7 @@ function descargarArchivo(e) {
 
         //Para debuggear
         //alert("Sirvió existosamente");
-        
+
         //Dato curioso: capturar las excepciones en el backend impide que se puedan
         //arrojar un status diferente por causa de un error en el servidor.
         if (req.status === 200) {
@@ -35,10 +35,10 @@ function descargarArchivo(e) {
             link.download = fileName;
             link.click();
         } else {
-        //O sea, este if es inútil hasta que me deshaga del try-catch del link que está 
-        //Atendiendo esta request.
+            //O sea, este if es inútil hasta que me deshaga del try-catch del link que está 
+            //Atendiendo esta request.
             document.getElementById("resultado").innerHTML = "Hubo un error";
-            
+
         }
 
 
@@ -81,6 +81,9 @@ function inscripcionConvocatoria(e) {
 
     //req.open("post", "../resp/respInscripcion.jsp");
     //req.open("post",'respuestas/debug.jsp');
+    //
+    //TUVE QUE UTILIZAR UN SERVLET PARA ESTO. NO ENCONTRÉ UNA FORMA DE SOLUCIONAR ESTE PROBLEMA SIN USAR UN SERVLET
+    //https://www.moreofless.co.uk/unable-process-parts-no-multi-part-configuration-provided/
     req.open("POST", "../../regInscripcion");
     req.send(formData);
 }
