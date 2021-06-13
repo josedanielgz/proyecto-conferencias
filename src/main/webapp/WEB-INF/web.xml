@@ -20,6 +20,10 @@
         <servlet-name>insertarConvocatoria</servlet-name>
         <servlet-class>servlet.insertarConvocatoria</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>convocatoriasCSV</servlet-name>
+        <servlet-class>servlet.convocatoriasCSV</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>listaConvocatorias</servlet-name>
         <url-pattern>/listaConvocatorias</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>insertarConvocatoria</servlet-name>
         <url-pattern>/insertarConvocatoria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>convocatoriasCSV</servlet-name>
+        <url-pattern>/convocatoriasCSV</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

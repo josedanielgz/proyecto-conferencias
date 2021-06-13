@@ -27,14 +27,13 @@ public class PruebaCSV {
 
     public static void main(String[] args) throws IOException {
 
+        // https://dirask.com/posts/Java-how-to-write-java-object-to-CSV-file-using-Jackson-CSV-library-8pVk0j
         // set correct directory as output
-        File csvOutputFile = new File("./files/test.csv");
-
         Usuario a = new Usuario(1, "JOSE", "DANIEL", LocalDate.of(1998, Month.MARCH, 19));
         Usuario b = new Usuario(2, "JESE", "D", LocalDate.of(1991, Month.MARCH, 11));
 
         List<Usuario> list = new ArrayList<>(Arrays.asList(a, b));
-        
+
         // Solución a un problema específico https://stackoverflow.com/a/62261734
         CsvMapper mapper = new CsvMapper();
         mapper.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true);
@@ -47,11 +46,32 @@ public class PruebaCSV {
                 .addColumn("fecha_nacimiento")
                 .build();
 
-        ObjectWriter writer = mapper.writerFor(Usuario.class).with(schema);
+            ObjectWriter writer = mapper.writerFor(Usuario.class).with(schema);
 
-        writer.writeValues(csvOutputFile).writeAll(list);
+            byte[] csv = writer.writeValueAsBytes(b);
+            System.out.println(new String(csv));
+        
 
-        System.out.println("Users saved to csv file under path: ");
-        System.out.println(csvOutputFile);
+//        File csvOutputFile = new File("./files/test.csv");
+//        List<Usuario> list = new ArrayList<>(Arrays.asList(a, b));
+//
+//        // Solución a un problema específico https://stackoverflow.com/a/62261734
+//        CsvMapper mapper = new CsvMapper();
+//        mapper.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true);
+//        mapper.registerModule(new JavaTimeModule());
+//
+//        CsvSchema schema = CsvSchema.builder().setUseHeader(true)
+//                .addColumn("documento")
+//                .addColumn("primer_nombre")
+//                .addColumn("primer_apellido")
+//                .addColumn("fecha_nacimiento")
+//                .build();
+//
+//        ObjectWriter writer = mapper.writerFor(Usuario.class).with(schema);
+//
+//        writer.writeValues(csvOutputFile).writeAll(list);
+//
+//        System.out.println("Users saved to csv file under path: ");
+//        System.out.println(csvOutputFile);
     }
 }

@@ -12,6 +12,18 @@
         <servlet-name>descArchivo</servlet-name>
         <servlet-class>servlet.descArchivo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>listaInscripciones</servlet-name>
+        <servlet-class>servlet.listaInscripciones</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>insertarConvocatoria</servlet-name>
+        <servlet-class>servlet.insertarConvocatoria</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>convocatoriasCSV</servlet-name>
+        <servlet-class>servlet.convocatoriasCSV</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>listaConvocatorias</servlet-name>
         <url-pattern>/listaConvocatorias</url-pattern>
@@ -23,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>descArchivo</servlet-name>
         <url-pattern>/descArchivo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listaInscripciones</servlet-name>
+        <url-pattern>/listaInscripciones</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>insertarConvocatoria</servlet-name>
+        <url-pattern>/insertarConvocatoria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>convocatoriasCSV</servlet-name>
+        <url-pattern>/convocatoriasCSV</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,13 +1,17 @@
-/home/anyusername/NetBeansProjects/proyectoConvocatorias/src/main/java/capadatos/Conexion.java
-/home/anyusername/NetBeansProjects/proyectoConvocatorias/src/main/java/capadatos/dao/UsuarioDAO.java
-/home/anyusername/NetBeansProjects/proyectoConvocatorias/src/main/java/modelo/Usuario.java
-/home/anyusername/NetBeansProjects/proyectoConvocatorias/src/main/java/servlet/descArchivo.java
-/home/anyusername/NetBeansProjects/proyectoConvocatorias/src/main/java/servlet/regInscripcion.java
-/home/anyusername/NetBeansProjects/proyectoConvocatorias/src/main/java/facade/Facade.java
-/home/anyusername/NetBeansProjects/proyectoConvocatorias/src/main/java/negocio/ConvocatoriaNegocio.java
-/home/anyusername/NetBeansProjects/proyectoConvocatorias/src/main/java/capadatos/dao/InscripcionDAO.java
-/home/anyusername/NetBeansProjects/proyectoConvocatorias/src/main/java/modelo/Convocatoria.java
-/home/anyusername/NetBeansProjects/proyectoConvocatorias/src/main/java/capadatos/dao/ConvocatoriaDAO.java
-/home/anyusername/NetBeansProjects/proyectoConvocatorias/src/main/java/negocio/UsuarioNegocio.java
-/home/anyusername/NetBeansProjects/proyectoConvocatorias/src/main/java/modelo/Inscripcion.java
-/home/anyusername/NetBeansProjects/proyectoConvocatorias/src/main/java/negocio/InscripcionNegocio.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/negocio/ConvocatoriaNegocio.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/negocio/UsuarioNegocio.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/servlet/convocatoriasCSV.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/modelo/Convocatoria.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/modelo/Usuario.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/capadatos/PruebaCSV.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/facade/Facade.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/negocio/InscripcionNegocio.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/capadatos/dao/ConvocatoriaDAO.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/modelo/Inscripcion.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/servlet/regInscripcion.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/capadatos/dao/InscripcionDAO.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/servlet/descArchivo.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/servlet/insertarConvocatoria.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/capadatos/dao/UsuarioDAO.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/capadatos/Conexion.java
+/mnt/shared/Personal/.Staging Zone/proyecto-convocatorias/src/main/java/servlet/listaInscripciones.java

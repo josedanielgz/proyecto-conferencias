@@ -40,7 +40,7 @@
         <link href="../../css/dataTable/buttons.dataTables.min.css" rel="stylesheet">
         -->
 
-
+        <script src="../../js/ajax/convocatoria.js"></script>
     </head>
     <body>
 
@@ -58,16 +58,16 @@
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="../../secciones/forms/inscribirConvocatoria.html">Inscripción</a>
+                            <a class="nav-link" href="../../secciones/forms/inscribirConvocatoria.html">Inscribirse en convocatoria</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../../secciones/forms/registrarUsuario.html">Registro de usuario</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../secciones/forms/login.html">Iniciar Sesion</a>
+                            <a class="nav-link" href="../../secciones/forms/login.html">Iniciar sesion</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./">Listado Convocatorias</a>
+                            <a class="nav-link" href="#" onclick="window.location.reload(false)">Listar convocatorias</a>
                         </li>
                     </ul>
 
@@ -105,6 +105,12 @@
                     %>
                 </tbody>
             </table>
+
+            <form id="bajar_csv" onsubmit="descargarCSV(event)">
+                <input type="submit" value="Descargar como CSV">
+            </form>
+
+            <div id="resultado"></div>
 
             <!--
                         <div>

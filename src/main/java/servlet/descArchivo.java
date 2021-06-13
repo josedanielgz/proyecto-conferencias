@@ -62,6 +62,7 @@ public class descArchivo extends HttpServlet {
         response.setHeader("filename", nombre);
         response.setHeader("Content-Disposition", "attachment; filename=" + nombre);
         BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
+        
         bos.write(archivo, 0, archivo.length);
         bos.close();
 
