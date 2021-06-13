@@ -19,6 +19,8 @@ public class Facade {
         inscripcionNegocio = new InscripcionNegocio();
     }
 
+    // Para el manejo de convocatorias
+    
     public String insertarConvocatoria(Convocatoria c) {
         return convocatoriaNegocio.insertarConvocatoria(c);
     }
@@ -30,6 +32,12 @@ public class Facade {
     public List<Convocatoria> buscarConvocatorias() {
         return convocatoriaNegocio.buscarConvocatorias();
     }
+    
+    // Para el manejo de inscripciones
+    
+    public List<Inscripcion> buscarInscripciones(){
+        return inscripcionNegocio.buscarInscripciones();
+    }
 
     public Inscripcion devolverArchivo(Integer documento, String convocatoria) {
         return inscripcionNegocio.devolverArchivo(documento, convocatoria);
@@ -39,7 +47,7 @@ public class Facade {
 
         Facade a = new Facade();
 
-        System.out.println(a.devolverArchivo(1, "2"));
+        System.out.println(a.buscarInscripciones());
 
     }
 }

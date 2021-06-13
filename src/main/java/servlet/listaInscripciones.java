@@ -6,20 +6,18 @@
 package servlet;
 
 import facade.Facade;
-import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Inscripcion;
 
 /**
  *
  * @author anyusername
  */
-public class descArchivo extends HttpServlet {
+public class listaInscripciones extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -47,25 +45,15 @@ public class descArchivo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        //Colocar un try-catch aquí sería una buena idea, pero quiero probar algo en el
-        //front (ver inscripcion.js)
-        Integer documento = Integer.parseInt(request.getParameter("documento"));
-        String convocatoria = request.getParameter("convocatoria");
-
         Facade in = new Facade();
-        Inscripcion aux = in.devolverArchivo(documento, convocatoria);
-        byte[] archivo = aux.getArhivo();
-        String nombre = aux.getNombre_archivo();
 
-        response.setContentType("application/zip");
-        response.setHeader("filename", nombre);
-        response.setHeader("Content-Disposition", "attachment; filename=" + nombre);
-        BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
-        
-        bos.write(archivo, 0, archivo.length);
-        bos.close();
+        if (in.buscarConvocatorias() == null) {
+            request.setAttribute("error", "Esta cosa es nula");
+            request.getRequestDispatcher("secciones/resp/error.jsp").forward(request, response);
+        }
 
+        request.setAttribute("msj", "Está llena la vuelta");
+        request.getRequestDispatcher("secciones/resp/exito.jsp").forward(request, response);
     }
 
     /**

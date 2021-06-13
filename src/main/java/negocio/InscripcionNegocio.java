@@ -89,11 +89,12 @@ public class InscripcionNegocio {
             if (resultado.isEmpty()) {
                 return null;
             }
+            return resultado;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-        return null;
+
     }
 
     public String insertarArchivo(String nombre, InputStream lectorDeBytes, Integer documento, String convocatoria) {
@@ -124,7 +125,8 @@ public class InscripcionNegocio {
 
     public static void main(String[] args) {
         InscripcionNegocio in = new InscripcionNegocio();
-        Inscripcion x = in.devolverArchivo(1, "1");
-        System.out.println(x.getNombre_archivo());
+        System.out.println(in.buscarInscripciones());
+//        Inscripcion x = in.devolverArchivo(1, "1");
+//        System.out.println(x.getNombre_archivo());
     }
 }

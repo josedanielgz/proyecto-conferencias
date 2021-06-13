@@ -6,6 +6,8 @@
 package negocio;
 
 import capadatos.dao.ConvocatoriaDAO;
+import java.time.LocalDate;
+import java.time.Month;
 import modelo.Convocatoria;
 import java.util.List;
 import java.util.logging.Level;
@@ -69,13 +71,15 @@ public class ConvocatoriaNegocio {
 
     public static void main(String[] args) {
         ConvocatoriaNegocio cn = new ConvocatoriaNegocio();
-        try {
-            for (Convocatoria a : cn.buscarConvocatorias()) {
-
-                System.out.println(a);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(ConvocatoriaNegocio.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Convocatoria c = new Convocatoria("3", "Convocatoria 3", "Una descripción", LocalDate.now(), LocalDate.of(2021, Month.AUGUST, 11), LocalDate.of(2021, Month.AUGUST, 13), "Abierta", "");
+        System.out.println(cn.insertarConvocatoria(c));
+//        try {
+//            for (Convocatoria a : cn.buscarConvocatorias()) {
+//
+//                System.out.println(a);
+//            }
+//        } catch (Exception ex) {
+//            Logger.getLogger(ConvocatoriaNegocio.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 }

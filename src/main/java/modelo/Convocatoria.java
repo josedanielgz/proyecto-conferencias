@@ -1,21 +1,33 @@
-
-
 //Sebastian
 package modelo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import java.io.Serializable;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@JsonPropertyOrder({"id", "nombre", "descripcion", "fecha_inicio", "fecha_inscripcion", "fecha_final", "estado", "requisito"})
+public class Convocatoria implements Serializable {
 
-public class Convocatoria implements Serializable{
     private String id;
     private String nombre;
     private String descripcion;
+
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate fecha_inicio;
+
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate fecha_inscripcion;
+
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate fecha_final;
+
     private String estado;
     private String requisito;
 
@@ -24,8 +36,8 @@ public class Convocatoria implements Serializable{
     }
 
     public Convocatoria(String id, String nombre, String descripcion, LocalDate fecha_inicio,
-                        LocalDate fecha_inscripcion, LocalDate fecha_final, String estado, String requisito) {
-        
+            LocalDate fecha_inscripcion, LocalDate fecha_final, String estado, String requisito) {
+
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -102,10 +114,9 @@ public class Convocatoria implements Serializable{
 
     @Override
     public String toString() {
-        return "Convocatoria{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fecha_inicio=" + fecha_inicio + ", fecha_inscripcion=" + fecha_inscripcion + ", fecha_final=" + fecha_final + ", estado=" + estado + ", requisito=" + requisito + '}';
+//        return "Convocatoria{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fecha_inicio=" + fecha_inicio + ", fecha_inscripcion=" + fecha_inscripcion + ", fecha_final=" + fecha_final + ", estado=" + estado + ", requisito=" + requisito + '}';
+    return id + "," + nombre + "," + descripcion + "," + fecha_inicio + "," + fecha_inscripcion + "," + fecha_final + "," + estado + "," + requisito;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -131,9 +142,9 @@ public class Convocatoria implements Serializable{
         }
         return true;
     }
-    
-    public boolean isNull(){
+
+    public boolean isNull() {
         return this.id == null;
     }
-    
+
 }

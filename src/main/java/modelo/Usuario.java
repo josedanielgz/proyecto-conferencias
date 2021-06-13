@@ -7,14 +7,22 @@
 //Jose
 package modelo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDate;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
+@JsonPropertyOrder({"documento", "primer_nombre", "primer_apellido","fecha_nacimiento"})
 
 public class Usuario {
     private Integer documento;
     private String primer_nombre;
     private String primer_apellido;
+    
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate fecha_nacimiento;
 
     public Usuario() {

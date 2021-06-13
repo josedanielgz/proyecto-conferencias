@@ -15,6 +15,6 @@
         <h1>Hubo un error al realizar la operación</h1>
         <h1>Esto es lo que está llegando</h1>
         ${requestScope.error}
-        <a href="../">Volver al inicio</a>
+        <a href="${pageContext.request.contextPath}">Volver al inicio</a>
     </body>
 </html>

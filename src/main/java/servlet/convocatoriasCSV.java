@@ -8,18 +8,20 @@ package servlet;
 import facade.Facade;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
+
+import java.time.LocalDate;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Inscripcion;
+import modelo.Convocatoria;
 
 /**
  *
  * @author anyusername
  */
-public class descArchivo extends HttpServlet {
+public class convocatoriasCSV extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +34,19 @@ public class descArchivo extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+//        response.setContentType("text/html;charset=UTF-8");
+//        try (PrintWriter out = response.getWriter()) {
+//            /* TODO output your page here. You may use following sample code. */
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet convocatoriasCSV</title>");            
+//            out.println("</head>");
+//            out.println("<body>");
+//            out.println("<h1>Servlet convocatoriasCSV at " + request.getContextPath() + "</h1>");
+//            out.println("</body>");
+//            out.println("</html>");
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -47,23 +61,29 @@ public class descArchivo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+//        processRequest(request, response);
+//        https://stackoverflow.com/a/3169575
 
-        //Colocar un try-catch aquí sería una buena idea, pero quiero probar algo en el
-        //front (ver inscripcion.js)
-        Integer documento = Integer.parseInt(request.getParameter("documento"));
-        String convocatoria = request.getParameter("convocatoria");
+        Facade f = new Facade();
 
-        Facade in = new Facade();
-        Inscripcion aux = in.devolverArchivo(documento, convocatoria);
-        byte[] archivo = aux.getArhivo();
-        String nombre = aux.getNombre_archivo();
+        List<Convocatoria> lista = f.buscarConvocatorias();
 
-        response.setContentType("application/zip");
-        response.setHeader("filename", nombre);
-        response.setHeader("Content-Disposition", "attachment; filename=" + nombre);
+        response.setHeader("Content-Type", "text/csv");
+        response.setHeader("Content-Disposition", "attachment;filename=\"archivo.csv\"");
+
         BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
+
+        String header = "id,nombre,descripcion,fecha_inicio,fecha_inscripcion,fecha_final,estado,requisito";
+        byte[] headerBytes = header.getBytes();
+        bos.write(headerBytes, 0, headerBytes.length);
+        bos.write(10);
+
+        for (Convocatoria b : lista) {
+            byte[] csv = b.toString().getBytes();
+            bos.write(csv, 0, csv.length);
+            bos.write(10);
+        }
         
-        bos.write(archivo, 0, archivo.length);
         bos.close();
 
     }

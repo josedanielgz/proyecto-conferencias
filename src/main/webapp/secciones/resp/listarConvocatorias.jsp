@@ -40,6 +40,9 @@
         <link href="../../css/dataTable/buttons.dataTables.min.css" rel="stylesheet">
         -->
 
+        <!--https://github.com/jayanthbabu123/how-to-convert-html-web-pages-to-pdf-in-javascript/blob/master/pdf.html-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+        <script src="../../js/ajax/convocatoria.js"></script>
 
     </head>
     <body>
@@ -58,16 +61,16 @@
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="../../secciones/forms/inscribirConvocatoria.html">Inscripción</a>
+                            <a class="nav-link" href="../../secciones/forms/inscribirConvocatoria.html">Inscribirse en convocatoria</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../../secciones/forms/registrarUsuario.html">Registro de usuario</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../secciones/forms/login.html">Iniciar Sesion</a>
+                            <a class="nav-link" href="../../secciones/forms/login.html">Iniciar sesion</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./">Listado Convocatorias</a>
+                            <a class="nav-link" href="#" onclick="window.location.reload(false)">Listar convocatorias</a>
                         </li>
                     </ul>
 
@@ -75,7 +78,7 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container" id="imprimir">
             <table class="table table-stripped">
                 <thead>
                     <tr>
@@ -105,14 +108,13 @@
                     %>
                 </tbody>
             </table>
-
-            <!--
-                        <div>
-                            Este es el tamaño del arreglo <%//convocatorias.size()%>
-                        </div>
-            -->
         </div>
 
+        <button class="btn btn-primary" id="descargarCSV"> Descargar CSV</button>
+        <button class="btn btn-primary" id="descargarPDF"> Descargar PDF</button>
+
+
+        <div id="resultado"></div>
         <!--
                 <script src="js/dataTable/jquery.dataTables.min.js"></script>
                 <script src="js/dataTable/dataTables.buttons.min.js"></script>

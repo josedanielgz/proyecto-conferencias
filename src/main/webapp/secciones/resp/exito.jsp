@@ -15,6 +15,6 @@
         <h1>No hubo errores al completar la operación</h1>
         <h1>Esto es lo que está llegando</h1>
         ${requestScope.msj}
-        <a href="../">Volver al inicio</a>
+        <a href="${pageContext.request.contextPath}">Volver al inicio</a>
     </body>
 </html>

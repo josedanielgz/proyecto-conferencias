@@ -81,18 +81,21 @@ public class InscripcionDAO {
         Conexion con = new Conexion();
         PreparedStatement ps;
         try (Connection conexion = con.conectar("")) {
-            String sql = "SELECT (fecha_inscripcion, documento, convocatoria, nombre_archivo)"
+            String sql = "SELECT fecha_inscripcion, documento, convocatoria, nombre_archivo"
                     + " FROM inscripcion;";
             ps = conexion.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+
                 Inscripcion i = new Inscripcion();
                 i.setFecha_inscripcion(rs.getDate(1).toLocalDate());
                 i.setDocumento(rs.getInt(2));
                 i.setConvocatoria(rs.getString(3));
                 i.setNombre_archivo(rs.getString(4));
                 il.add(i);
+
             }
+
             ps.close();
         }
 
@@ -175,13 +178,10 @@ public class InscripcionDAO {
 
     public static void main(String[] args) {
         try {
-            System.out.println(new InscripcionDAO().devolverArchivo(1, "1"));
+//            System.out.println(new InscripcionDAO().devolverArchivo(1, "1"));
+            System.out.println(new InscripcionDAO().listaDeInscripciones());
         } catch (SQLException ex) {
-            Logger.getLogger(InscripcionDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(InscripcionDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(InscripcionDAO.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(InscripcionDAO.class.getName()).log(Level.SEVERE, null, ex));
         }
     }
 
