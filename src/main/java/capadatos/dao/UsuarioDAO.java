@@ -6,6 +6,9 @@
 package capadatos.dao;
 
 import capadatos.Conexion;
+import capadatos.PasswordManager;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import modelo.Usuario;
 import java.sql.Connection;
 import java.sql.Date;
@@ -46,6 +49,57 @@ public class UsuarioDAO {
 
     }
 
+    public boolean esUnAdministrador(Integer documento) throws SQLException {
+
+        Conexion con = new Conexion();
+        Connection conexion = con.conectar("UsuarioDAO.insertarUsuario()");
+        String sql = "SELECT * FROM administrador WHERE documento=?;";
+        PreparedStatement ps = conexion.prepareStatement(sql);
+
+        ps.setInt(1, documento);
+        ResultSet rs = ps.executeQuery();
+        Usuario us = new Usuario();
+
+        ps.close();
+        conexion.close();
+
+        ps = null;
+        conexion = null;
+
+        return rs.next();
+
+    }
+
+    public boolean inicioDeSesion(Integer documento, String clave_acceso) throws SQLException, NoSuchAlgorithmException, InvalidKeySpecException {
+
+        Conexion con = new Conexion();
+        Connection conexion = con.conectar("UsuarioDAO.insertarUsuario()");
+        String sql = "SELECT documento, primer_nombre, primer_apellido, fecha_nacimiento, correo_electronico,"
+                + "clave_acceso FROM usuario WHERE documento=?;";
+        PreparedStatement ps = conexion.prepareStatement(sql);
+
+        ps.setInt(1, documento);
+        ResultSet rs = ps.executeQuery();
+        Usuario us = new Usuario();
+        while (rs.next()) {
+            us.setDocumento(rs.getInt(1));
+            us.setPrimer_apellido(rs.getString(2));
+            us.setPrimer_apellido(rs.getString(3));
+            us.setFecha_nacimiento(rs.getDate(4).toLocalDate());
+            us.setCorreo_electronico(rs.getString(5));
+            us.setClave_acceso(rs.getString(6));
+        }
+        ps.close();
+        conexion.close();
+
+        ps = null;
+        conexion = null;
+        PasswordManager pm = new PasswordManager();
+
+        return pm.validatePassword(clave_acceso, us.getClave_acceso());
+
+    }
+
 //    public boolean insertarUsuario(Usuario u) throws SQLException {
 //
 //        boolean rta = false;
@@ -70,12 +124,12 @@ public class UsuarioDAO {
 //        return rta;
 //
 //    }
-
     public Usuario buscaUsuario(Integer documento) throws SQLException {
 
         Conexion con = new Conexion();
         Connection conexion = con.conectar("UsuarioDAO.insertarUsuario()");
-        String sql = "SELECT * FROM usuario WHERE documento=?;";
+        String sql = "SELECT documento, primer_nombre, primer_apellido, fecha_nacimiento, correo_electronico,"
+                + "clave_acceso FROM usuario WHERE documento=?;";
         PreparedStatement ps = conexion.prepareStatement(sql);
 
         ps.setInt(1, documento);
@@ -86,7 +140,8 @@ public class UsuarioDAO {
             us.setPrimer_apellido(rs.getString(2));
             us.setPrimer_apellido(rs.getString(3));
             us.setFecha_nacimiento(rs.getDate(4).toLocalDate());
-            us.setClave_acceso(rs.getString(5));
+            us.setCorreo_electronico(rs.getString(5));
+            us.setClave_acceso(rs.getString(6));
         }
 
         ps.close();
@@ -124,11 +179,26 @@ public class UsuarioDAO {
     }
 
     public static void main(String[] args) {
-        UsuarioDAO u = new UsuarioDAO();
+
         try {
-            System.out.println(u.buscaUsuario(1));
+            UsuarioDAO u = new UsuarioDAO();
+            System.out.println(u.inicioDeSesion(7, "123456"));
+            
+            /*
+            Usuario x = u.buscaUsuario(7);
+            String a = x.getClave_acceso();
+            System.out.println(aSystem.out.println(u.inicioDeSesion(7, "123456")););
+            PasswordManager pm = new PasswordManager();
+            System.out.println(pm.validatePassword("123456", a));
+             */
+
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidKeySpecException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 }

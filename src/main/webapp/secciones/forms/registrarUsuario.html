@@ -13,6 +13,7 @@ and open the template in the editor.
 
         <link href="../../vendor/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
         <script type="text/javascript" src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../js/ajax/usuario.js"></script>
     </head>
     <body>
 
@@ -55,9 +56,11 @@ and open the template in the editor.
                     <label>Primer nombre: </label><input class="form-control" type="text" id="primer_nombre"><br>
                     <label>Primer apellido: </label><input class="form-control" type="text" id="primer_apellido"><br>
                     <label>Fecha de nacimiento: </label><input class="form-control" type="date" id="fecha_nacimiento">
+                    <label>Correo electrónico: </label><input class="form-control" type="email" id="correo">
                     <label>Clave de acceso: </label><input class="form-control" type="password" id="clave">
-                    <button class="btn btn-primary" type="submit">Registrar usuario</button>
+                    <!--<label>¿Es un administrador? </label><input type="checkbox" class="form-check-input" id="es_admin">-->
                 </div>
+                <button class="btn btn-primary" type="submit">Registrar usuario</button>
             </form>
         </div>
         <footer class="py-5 bg-dark">
@@ -65,39 +68,5 @@ and open the template in the editor.
                 <p class="m-0 text-center text-white">Grupo 9. 2021</p>
             </div>
         </footer>
-        <script>
-            // https://stackoverflow.com/questions/20800763/how-to-send-json-data-to-server-using-ajax
-            function registrar(e) {
-                e.preventDefault();
-                var objectData =
-                        {
-                            documento: document.getElementById('documento').value,
-                            primer_nombre: document.getElementById('primer_nombre').value,
-                            primer_apellido: document.getElementById('primer_apellido').value,
-                            fecha_nacimiento: document.getElementById('fecha_nacimiento').value,
-                            clave: document.getElementById('clave').value
-                        };
-
-                var objectDataString = JSON.stringify(objectData);
-
-                $.ajax({
-                    type: "POST",
-                    url: "../../regUsuario",
-                    dataType: "json",
-                    data: {
-                        data: objectDataString
-                    },
-                    success: function (data) {
-                        alert(data.msj);
-                        window.location.replace("../..");
-
-                    },
-                    error: function () {
-                        alert('Error: ' + data.msj);
-                    }
-                });
-
-            }
-        </script>
     </body>
 </html>

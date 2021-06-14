@@ -25,7 +25,9 @@ public class Usuario {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate fecha_nacimiento;
 
+    private String correo_electronico;
     private String clave_acceso;
+    
     public Usuario() {
         super();
     }
@@ -70,6 +72,14 @@ public class Usuario {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
+    public String getCorreo_electronico() {
+        return correo_electronico;
+    }
+
+    public void setCorreo_electronico(String correo_electronico) {
+        this.correo_electronico = correo_electronico;
+    }
+    
     public String getClave_acceso() {
         return clave_acceso;
     }

@@ -73,10 +73,18 @@ public class UsuarioNegocio {
         return null;
     }
 
+    public boolean inicioDeSesion(Integer documento, String clave_acceso) {
+        try {
+            return usuarioDAO.inicioDeSesion(documento, clave_acceso);
+        } catch (Exception ex) {
+            
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         UsuarioNegocio c = new UsuarioNegocio();
-        Usuario a = c.buscarUsuario(1);
-        System.out.println(a);
+        System.out.println(c.inicioDeSesion(7, "123456"));
     }
 
 }

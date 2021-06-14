@@ -12,6 +12,8 @@
         <script src="../../vendor/jquery/jquery.min.js"></script>
         <link href="../../vendor/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
         <script type="text/javascript" src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+        
+        <script src="../../js/ajax/usuario.js"></script>
         <link rel="stylesheet" type="text/css" href="../../css/css_login.css" />
     </head>
 
@@ -42,25 +44,23 @@
         </nav>
 
         <div class="sidenav">
-            <div class="login-main-text">
-                <h2>Aqui puede ir un banner vertical<br></h2>
-                <p>        </p>
+            <div class="login-main-text" id="resultado">
+                <!--<h2>Aqui puede ir un banner vertical<br></h2>-->
             </div>
         </div>
         <div class="main">
             <div class="col-md-6 col-sm-12">
                 <div class="login-form">
-                    <form>
+                    <form method="get" onsubmit="iniciarSesion(event)">
                         <div class="form-group">
                             <label>Usuario</label>
-                            <input type="text" class="form-control" placeholder="Usuario">
+                            <input type="text" class="form-control" id="usuario" placeholder="Usuario">
                         </div>
                         <div class="form-group">
                             <label>Clave</label>
-                            <input type="password" class="form-control" placeholder="Clave">
+                            <input type="password" class="form-control" id="clave" placeholder="Clave">
                         </div>
                         <button type="submit" class="btn btn-black">Entrar</button>
-                        <button type="submit" class="btn btn-secondary">Registrarse</button>
                     </form>
                 </div>
             </div>

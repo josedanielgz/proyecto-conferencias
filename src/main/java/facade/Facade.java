@@ -50,6 +50,12 @@ public class Facade {
     public Inscripcion devolverArchivo(Integer documento, String convocatoria) {
         return inscripcionNegocio.devolverArchivo(documento, convocatoria);
     }
+    
+    // Para el manejo de usuarios
+    
+    public boolean inicioDeSesion(Integer documento, String clave_acceso){
+        return usuarioNegocio.inicioDeSesion(documento, clave_acceso);
+    }
 
     public static void main(String[] args) {
 

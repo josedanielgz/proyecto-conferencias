@@ -32,6 +32,10 @@
         <servlet-name>regUsuario</servlet-name>
         <servlet-class>servlet.regUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>iniciarSesion</servlet-name>
+        <servlet-class>servlet.iniciarSesion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>listaConvocatorias</servlet-name>
         <url-pattern>/listaConvocatorias</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>regUsuario</servlet-name>
         <url-pattern>/regUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>iniciarSesion</servlet-name>
+        <url-pattern>/iniciarSesion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
