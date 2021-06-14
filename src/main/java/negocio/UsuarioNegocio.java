@@ -6,6 +6,7 @@
 package negocio;
 
 import capadatos.dao.UsuarioDAO;
+import java.sql.SQLException;
 import modelo.Usuario;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -79,6 +80,23 @@ public class UsuarioNegocio {
         } catch (Exception ex) {
             
         }
+        return false;
+    }
+    
+    public boolean insertarAdministrador(Integer documento){
+    
+        if(buscarUsuario(documento)!=null){       
+            try {
+                return usuarioDAO.insertarAdministrador(documento);
+            } catch (SQLException ex) {
+                Logger.getLogger(UsuarioNegocio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
+    }
+    
+    public boolean buscarAdministrador(Integer documento){
+    
         return false;
     }
 

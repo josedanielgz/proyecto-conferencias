@@ -11,13 +11,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import facade.Facade;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.math.BigDecimal;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.time.LocalDate;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -101,14 +96,6 @@ public class regUsuario extends HttpServlet {
             u.setFecha_nacimiento(LocalDate.parse(data.get("fecha_nacimiento")));
             u.setCorreo_electronico(data.get("correo_electronico"));
             u.setClave_acceso(pm.generateStrongPasswordHash(data.get("clave")));
-
-            /*
-            u.setDocumento(Integer.parseInt(request.getParameter("documento")));
-            u.setPrimer_nombre(request.getParameter("primer_nombre"));
-            u.setPrimer_apellido(request.getParameter("primer_apellido"));
-            u.setFecha_nacimiento(LocalDate.parse(request.getParameter("fecha_nacimiento")));
-            u.setClave_acceso(PasswordManager.generateStrongPasswordHash(request.getParameter("clave")));
-             */
             Facade f = new Facade();
             resp.put("msj", f.InsertarUsuario(u));
 

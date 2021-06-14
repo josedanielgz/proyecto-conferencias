@@ -15,11 +15,11 @@ function registrar(e) {
                 primer_apellido: document.getElementById('primer_apellido').value,
                 fecha_nacimiento: document.getElementById('fecha_nacimiento').value,
                 correo_electronico: document.getElementById('correo').value,
-                clave: document.getElementById('clave').value,
+                clave: document.getElementById('clave').value
             };
 //es_admin: document.getElementById("es_admin").checked
     var objectDataString = JSON.stringify(objectData);
-    // console.log(objectDataString);
+   // console.log(objectDataString);
 
 
     $.ajax({

@@ -18,10 +18,12 @@ import java.util.Map;
 public class PruebaJSON {
 
     public static void main(String[] args) throws JsonProcessingException, NoSuchAlgorithmException, InvalidKeySpecException {
-        String a = "{\"documento\":\"6\",\"primer_nombre\":\"JULIAN\",\"primer_apellido\":\"FULANO\",\"fecha_nacimiento\":\"2018-07-28\",\"clave\":\"123456\"}";
+        //String a = "{\"documento\":\"6\",\"primer_nombre\":\"JULIAN\",\"primer_apellido\":\"FULANO\",\"fecha_nacimiento\":\"2018-07-28\",\"clave\":\"123456\"}";
+        String a = "{\"documento\":\"1231\",\"primer_nombre\":\"12312\",\"primer_apellido\":\"21312312\",\"fecha_nacimiento\":\"2021-06-02\",\"correo_electronico\":\"asdasd@wqeqweq\",\"clave\":\"1231231\"}";
         ObjectMapper mapper = new ObjectMapper();
         Map<String, String> data = mapper.readValue(a, Map.class);
-        PasswordManager pm = new PasswordManager();
-        System.out.println(pm.generateStrongPasswordHash(data.get("clave")));
+        System.out.println(data.get("correo_electronico"));
+//        PasswordManager pm = new PasswordManager();
+//        System.out.println(pm.generateStrongPasswordHash(data.get("clave")));
     }
 }

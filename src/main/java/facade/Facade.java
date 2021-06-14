@@ -24,11 +24,10 @@ public class Facade {
     }
 
     // Para el manejo de convocatorias
-    
-    public String InsertarUsuario(Usuario u){
+    public String InsertarUsuario(Usuario u) {
         return usuarioNegocio.insertarUsuario(u);
     }
-    
+
     public String insertarConvocatoria(Convocatoria c) {
         return convocatoriaNegocio.insertarConvocatoria(c);
     }
@@ -40,21 +39,24 @@ public class Facade {
     public List<Convocatoria> buscarConvocatorias() {
         return convocatoriaNegocio.buscarConvocatorias();
     }
-    
+
     // Para el manejo de inscripciones
-    
-    public List<Inscripcion> buscarInscripciones(){
+    public List<Inscripcion> buscarInscripciones() {
         return inscripcionNegocio.buscarInscripciones();
     }
 
     public Inscripcion devolverArchivo(Integer documento, String convocatoria) {
         return inscripcionNegocio.devolverArchivo(documento, convocatoria);
     }
-    
+
     // Para el manejo de usuarios
     
-    public boolean inicioDeSesion(Integer documento, String clave_acceso){
+    public boolean inicioDeSesion(Integer documento, String clave_acceso) {
         return usuarioNegocio.inicioDeSesion(documento, clave_acceso);
+    }
+
+    public boolean insertarAdministrador(Integer documento) {
+        return usuarioNegocio.insertarAdministrador(documento);
     }
 
     public static void main(String[] args) {
