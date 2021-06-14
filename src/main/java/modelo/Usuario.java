@@ -92,4 +92,19 @@ public class Usuario {
     
         return this.documento==null;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Usuario{documento=").append(documento);
+        sb.append(", primer_nombre=").append(primer_nombre);
+        sb.append(", primer_apellido=").append(primer_apellido);
+        sb.append(", fecha_nacimiento=").append(fecha_nacimiento);
+        sb.append(", correo_electronico=").append(correo_electronico);
+        sb.append(", clave_acceso=").append(clave_acceso);
+        sb.append('}');
+        return sb.toString();
+    }
+    
+    
 }

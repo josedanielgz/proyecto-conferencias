@@ -102,7 +102,7 @@ public class UsuarioNegocio {
 
     public static void main(String[] args) {
         UsuarioNegocio c = new UsuarioNegocio();
-        System.out.println(c.inicioDeSesion(7, "123456"));
+        System.out.println(c.insertarAdministrador(9));
     }
 
 }

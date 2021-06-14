@@ -63,7 +63,7 @@ public class Facade {
 
         Facade a = new Facade();
 
-        System.out.println(a.buscarInscripciones());
+        System.out.println(a.insertarAdministrador(9));
 
     }
 }

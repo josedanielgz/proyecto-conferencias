@@ -160,13 +160,14 @@ public class UsuarioDAO {
         boolean rta = false;
 
         Conexion con = new Conexion();
-        Connection conexion = con.conectar("UsuarioDAO.insertarUsuario()");
+        Connection conexion = con.conectar("UsuarioDAO.insertarAdministrador()");
         String sql = "INSERT INTO administrador (documento) VALUES (?);";
         PreparedStatement ps = conexion.prepareStatement(sql);
 
         ps.setInt(1, documento);
-        rta = true;
-
+        
+        rta = !ps.execute();
+        
         ps.close();
         conexion.close();
 
@@ -192,7 +193,7 @@ public class UsuarioDAO {
 
         try {
             UsuarioDAO u = new UsuarioDAO();
-            System.out.println(u.buscarAdministrador(2));
+            System.out.println(u.insertarAdministrador(9));
             // System.out.println(u.inicioDeSesion(7, "123456"));
             
             /*

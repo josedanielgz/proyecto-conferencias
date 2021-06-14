@@ -81,27 +81,35 @@ public class regUsuario extends HttpServlet {
         PrintWriter writer = response.getWriter();
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode resp = mapper.createObjectNode();
+        String msj = "";
 
         try {
 
             Usuario u = new Usuario();
-            
+
             // https://stackoverflow.com/questions/5338943/read-json-string-in-servlet
-            Map<String, String> data = mapper.readValue(request.getParameter("data"), Map.class);
+            Map<String, Object> data = mapper.readValue(request.getParameter("data"), Map.class);
             PasswordManager pm = new PasswordManager();
+
+            u.setDocumento(Integer.parseInt(data.get("documento").toString()));
+            u.setPrimer_nombre(data.get("primer_nombre").toString());
+            u.setPrimer_apellido(data.get("primer_apellido").toString());
+            u.setFecha_nacimiento(LocalDate.parse(data.get("fecha_nacimiento").toString()));
+            u.setCorreo_electronico(data.get("correo_electronico").toString());
+            u.setClave_acceso(pm.generateStrongPasswordHash(data.get("clave").toString()));
             
-            u.setDocumento(Integer.parseInt(data.get("documento")));
-            u.setPrimer_nombre(data.get("primer_nombre"));
-            u.setPrimer_apellido(data.get("primer_apellido"));
-            u.setFecha_nacimiento(LocalDate.parse(data.get("fecha_nacimiento")));
-            u.setCorreo_electronico(data.get("correo_electronico"));
-            u.setClave_acceso(pm.generateStrongPasswordHash(data.get("clave")));
             Facade f = new Facade();
-            resp.put("msj", f.InsertarUsuario(u));
+            Boolean esAdmin = (Boolean) data.get("es_admin");
+            msj = f.InsertarUsuario(u);
+            if (esAdmin) {
+                f.insertarAdministrador(u.getDocumento());
+                msj = msj + ", se le asignó correctamente el cargo de administrador";
+            }
 
         } catch (Exception ex) {
-            resp.put("msj", ex.toString() + ", " + ex.getLocalizedMessage());
+            msj = ex.toString() + ", " + ex.getLocalizedMessage();
         }
+        resp.put("msj", msj);
         String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(resp);
         writer.write(json);
     }
