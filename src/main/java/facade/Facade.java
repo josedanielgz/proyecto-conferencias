@@ -6,20 +6,28 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Inscripcion;
+import modelo.Usuario;
 import negocio.InscripcionNegocio;
+import negocio.UsuarioNegocio;
 
 //Sebastian
 public class Facade {
 
     private final ConvocatoriaNegocio convocatoriaNegocio;
     private final InscripcionNegocio inscripcionNegocio;
+    private final UsuarioNegocio usuarioNegocio;
 
     public Facade() {
         convocatoriaNegocio = new ConvocatoriaNegocio();
         inscripcionNegocio = new InscripcionNegocio();
+        usuarioNegocio = new UsuarioNegocio();
     }
 
     // Para el manejo de convocatorias
+    
+    public String InsertarUsuario(Usuario u){
+        return usuarioNegocio.insertarUsuario(u);
+    }
     
     public String insertarConvocatoria(Convocatoria c) {
         return convocatoriaNegocio.insertarConvocatoria(c);

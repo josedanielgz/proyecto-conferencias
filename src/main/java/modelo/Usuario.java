@@ -25,6 +25,7 @@ public class Usuario {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate fecha_nacimiento;
 
+    private String clave_acceso;
     public Usuario() {
         super();
     }
@@ -34,6 +35,7 @@ public class Usuario {
         this.primer_nombre = primer_nombre;
         this.primer_apellido = primer_apellido;
         this.fecha_nacimiento = fecha_nacimiento;
+        this.clave_acceso = "";
     }
 
     public Integer getDocumento() {
@@ -68,29 +70,12 @@ public class Usuario {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + Objects.hashCode(this.documento);
-        return hash;
+    public String getClave_acceso() {
+        return clave_acceso;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Usuario other = (Usuario) obj;
-        if (!Objects.equals(this.documento, other.documento)) {
-            return false;
-        }
-        return true;
+    public void setClave_acceso(String clave_acceso) {
+        this.clave_acceso = clave_acceso;
     }
     
     public boolean isNull(){
