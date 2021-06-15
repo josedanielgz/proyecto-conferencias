@@ -5,21 +5,20 @@
  */
 package servlet;
 
-import capadatos.PasswordManager;
-import facade.Facade;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author anyusername
  */
-public class iniciarSesion extends HttpServlet {
+@WebServlet(name = "cerrarSesion", urlPatterns = {"/cerrarSesion"})
+public class cerrarSesion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +37,10 @@ public class iniciarSesion extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet iniciarSesion</title>");
+            out.println("<title>Servlet cerrarSesion</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet iniciarSesion at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet cerrarSesion at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,45 +58,7 @@ public class iniciarSesion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String msj = "";
-        Integer documento = Integer.parseInt(request.getParameter("usuario"));
-        String clave = request.getParameter("clave");
-        Boolean es_admin = Boolean.valueOf(request.getParameter("es_admin"));
-        HttpSession sesion = request.getSession();
-        
-//        PURO DEBUG
-//        msj = msj + es_admin.toString();
-//        request.setAttribute("error", msj);
-//        request.getRequestDispatcher("secciones/resp/error.jsp").forward(request, response);
-
-        
-        PasswordManager pm = new PasswordManager();
-        Facade f = new Facade();
-
-        if (f.inicioDeSesion(documento, clave)) {
-            msj = "Credenciales validadas.";
-            if (es_admin) {
-                if (f.esUnAdministrador(documento)) {
-                    msj = msj + "Sesión iniciada como administrador.";
-                    request.setAttribute("msj", msj);
-                    request.getRequestDispatcher("secciones/resp/exito.jsp").forward(request, response);
-                } else {
-                    msj = msj + " Pero este usuario no tiene permisos de administrador";
-                    request.setAttribute("error", msj);
-                    request.getRequestDispatcher("secciones/resp/error.jsp").forward(request, response);
-                }
-            } else {
-                msj = msj + "Sesión iniciada correctamente.";
-                request.setAttribute("msj", msj);
-                request.getRequestDispatcher("secciones/resp/exito.jsp").forward(request, response);
-            }
-
-        } else {
-            msj = "Inicio de sesión fallido, verifique las credenciales e intente otra vez";
-            request.setAttribute("error", msj);
-            request.getRequestDispatcher("secciones/resp/error.jsp").forward(request, response);
-        };
-         
+        processRequest(request, response);
     }
 
     /**

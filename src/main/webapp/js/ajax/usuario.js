@@ -44,11 +44,13 @@ function registrar(e) {
 
 function iniciarSesion(e) {
     e.preventDefault();
-    //console.log("El botón funciona");
+
 
     var usuario = document.getElementById("usuario").value;
     var clave = document.getElementById("clave").value;
-
+    var es_admin = document.getElementById("es_admin").checked;
+    console.log("usuario=" + usuario + "&clave=" + clave + "&es_admin=" + es_admin);
+    
     var req;
 
     if (window.XMLHttpRequest)
@@ -67,7 +69,7 @@ function iniciarSesion(e) {
         }
     };
 
-    req.open("GET", "../../iniciarSesion?usuario=" + usuario + "&clave=" + clave);
+    req.open("GET", "../../iniciarSesion?usuario=" + usuario + "&clave=" + clave + "&es_admin=" + es_admin);
     req.send();
-
+    
 }

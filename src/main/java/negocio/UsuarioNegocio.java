@@ -95,9 +95,15 @@ public class UsuarioNegocio {
         return false;
     }
     
-    public boolean buscarAdministrador(Integer documento){
     
-        return false;
+    public boolean esUnAdministrador(Integer documento){
+    
+        try {
+            return usuarioDAO.esUnAdministrador(documento);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioNegocio.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
 
     public static void main(String[] args) {

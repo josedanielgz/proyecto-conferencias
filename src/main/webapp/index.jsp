@@ -1,6 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<%-- 
+    Document   : index
+    Created on : 15/06/2021, 09:23:40 AM
+    Author     : anyusername
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
     <head>
 
         <meta charset="utf-8">
@@ -11,13 +17,12 @@
         <title>Convocatorias UFPS</title>
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="css/modern-business.css" rel="stylesheet">
-
     </head>
 
+    <% HttpSession sesion = request.getSession(false); %>
+
     <body>
-
         <!-- Navigation -->
-
 
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
@@ -26,13 +31,18 @@
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                <%--
+                    String s = (String) sesion.getAttribute("documento");
+                    if (s != null) {--%>
+
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="./secciones/forms/inscribirConvocatoria.html">Inscribirse en convocatoria</a>
                         </li>
                         <!--OJO: ELEMENTO PROVISIONAL PARA PROBAR LA DESCARGA DE ARCHIVOS DESDE EL SERVIDOR-->
-                        
+
                         <!--
                         <li class="nav-item">
                             <a class="nav-link" href="./secciones/forms/descInscripcion.html">Descargar archivo</a>
@@ -42,7 +52,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./listaInscripciones">Inscripciones disponibles</a>
                         </li>
-
+                        <%--} else {--%>
                         <li class="nav-item">
                             <a class="nav-link" href="./secciones/forms/registrarUsuario.html">Registro de usuario</a>
                         </li>
@@ -52,7 +62,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./secciones/forms/insertarConvocatoria.jsp">Registrar convocatoria</a>
                         </li>
-                        <!--EL CSS DE ESTA SECCION ESTÁ ROTO, ARREGLAR CUANTO ANTES-->
+                        <%--}--%>
                         <li class="nav-item">
                             <a class="nav-link" href="./secciones/resp/listarConvocatorias.jsp">Listar convocatorias</a>
                         </li>
@@ -132,7 +142,5 @@
             </div>
             <script src="vendor/jquery/jquery.min.js"></script>
             <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     </body>
-
 </html>

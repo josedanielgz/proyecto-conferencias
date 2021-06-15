@@ -49,27 +49,6 @@ public class UsuarioDAO {
 
     }
 
-    public boolean esUnAdministrador(Integer documento) throws SQLException {
-
-        Conexion con = new Conexion();
-        Connection conexion = con.conectar("UsuarioDAO.insertarUsuario()");
-        String sql = "SELECT * FROM administrador WHERE documento=?;";
-        PreparedStatement ps = conexion.prepareStatement(sql);
-
-        ps.setInt(1, documento);
-        ResultSet rs = ps.executeQuery();
-        Usuario us = new Usuario();
-
-        ps.close();
-        conexion.close();
-
-        ps = null;
-        conexion = null;
-
-        return rs.next();
-
-    }
-
     public boolean inicioDeSesion(Integer documento, String clave_acceso) throws SQLException, NoSuchAlgorithmException, InvalidKeySpecException {
 
         Conexion con = new Conexion();
@@ -153,10 +132,9 @@ public class UsuarioDAO {
         return us;
 
     }
-    
-        
-    public boolean insertarAdministrador(Integer documento) throws SQLException{
-    
+
+    public boolean insertarAdministrador(Integer documento) throws SQLException {
+
         boolean rta = false;
 
         Conexion con = new Conexion();
@@ -165,19 +143,21 @@ public class UsuarioDAO {
         PreparedStatement ps = conexion.prepareStatement(sql);
 
         ps.setInt(1, documento);
-        
+
         rta = !ps.execute();
-        
+
         ps.close();
         conexion.close();
 
         ps = null;
         conexion = null;
+
         return rta;
     }
-    
-    public boolean buscarAdministrador(Integer documento) throws SQLException{
-        
+
+    public boolean esUnAdministrador(Integer documento) throws SQLException {
+
+        boolean rta = false;
         Conexion con = new Conexion();
         Connection conexion = con.conectar("UsuarioDAO.insertarUsuario()");
         String sql = "SELECT documento FROM administrador WHERE documento=?;";
@@ -185,17 +165,24 @@ public class UsuarioDAO {
 
         ps.setInt(1, documento);
         ResultSet rs = ps.executeQuery();
- 
-        return rs.next();
+        rta = rs.next();
+        
+        ps.close();
+        conexion.close();
+
+        ps = null;
+        conexion = null;
+
+        return rta;
     }
 
     public static void main(String[] args) {
 
         try {
             UsuarioDAO u = new UsuarioDAO();
-            System.out.println(u.insertarAdministrador(9));
+            System.out.println(u.esUnAdministrador(4));
             // System.out.println(u.inicioDeSesion(7, "123456"));
-            
+
             /*
             Usuario x = u.buscaUsuario(7);
             String a = x.getClave_acceso();
@@ -203,7 +190,6 @@ public class UsuarioDAO {
             PasswordManager pm = new PasswordManager();
             System.out.println(pm.validatePassword("123456", a));
              */
-
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

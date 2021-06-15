@@ -59,6 +59,10 @@ public class Facade {
         return usuarioNegocio.insertarAdministrador(documento);
     }
 
+    public boolean esUnAdministrador(Integer documento){
+    
+        return usuarioNegocio.esUnAdministrador(documento);
+    }
     public static void main(String[] args) {
 
         Facade a = new Facade();
