@@ -59,7 +59,7 @@
                         if (s != null) {
                 %>
 
-                <a class="navbar-brand" href="../../">Usuario <%=s%></a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}">Usuario <%=s%></a>
 
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -70,10 +70,10 @@
                     <ul class="navbar-nav ml-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="./secciones/forms/inscribirConvocatoria.html">Inscribirse en convocatoria</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/secciones/forms/inscribirConvocatoria.html">Inscribirse en convocatoria</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./listaInscripciones">Inscripciones disponibles</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/listaInscripciones">Inscripciones disponibles</a>
                         </li>
 
                         <li class="nav-item">
@@ -82,7 +82,7 @@
 
                         <%} else {%>
 
-                        <a class="navbar-brand" href="../../">Menú Convocatoria</a>
+                        <a class="navbar-brand" href="${pageContext.request.contextPath}">Menú Convocatoria</a>
 
                         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -94,10 +94,10 @@
 
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../../secciones/forms/registrarUsuario.html">Registro de usuario</a>
+                                    <a class="nav-link" href="${pageContext.request.contextPath}/secciones/forms/registrarUsuario.html">Registro de usuario</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../../secciones/forms/login.html">Iniciar sesion</a>
+                                    <a class="nav-link" href="${pageContext.request.contextPath}/secciones/forms/login.html">Iniciar sesion</a>
                                 </li>
 
                                 <%}

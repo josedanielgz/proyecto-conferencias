@@ -46,7 +46,7 @@
                             <a class="nav-link" href="./secciones/forms/inscribirConvocatoria.html">Inscribirse en convocatoria</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./listaInscripciones">Inscripciones disponibles</a>
+                            <a class="nav-link" href="secciones/resp/listarInscripciones.jsp">Inscripciones disponibles</a>
                         </li>
 
                         <li class="nav-item">
