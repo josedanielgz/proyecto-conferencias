@@ -19,7 +19,7 @@
         <link href="css/modern-business.css" rel="stylesheet">
     </head>
 
-    <% HttpSession sesion = request.getSession(false); %>
+    <% HttpSession sesion = request.getSession(false);%>
 
     <body>
         <!-- Navigation -->
@@ -27,48 +27,63 @@
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
 
-                <a class="navbar-brand" href="./">Menu Convocatoria</a>
+
+                <%
+                    if (sesion != null) {
+
+                        Integer s = (Integer) sesion.getAttribute("documento");
+                        if (s != null) {
+                %>
+                <a class="navbar-brand" href="./">Usuario <%=s%></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <%--
-                    String s = (String) sesion.getAttribute("documento");
-                    if (s != null) {--%>
-
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
+
                         <li class="nav-item">
                             <a class="nav-link" href="./secciones/forms/inscribirConvocatoria.html">Inscribirse en convocatoria</a>
                         </li>
-                        <!--OJO: ELEMENTO PROVISIONAL PARA PROBAR LA DESCARGA DE ARCHIVOS DESDE EL SERVIDOR-->
-
-                        <!--
-                        <li class="nav-item">
-                            <a class="nav-link" href="./secciones/forms/descInscripcion.html">Descargar archivo</a>
-                        </li>
-                        -->
-
                         <li class="nav-item">
                             <a class="nav-link" href="./listaInscripciones">Inscripciones disponibles</a>
                         </li>
-                        <%--} else {--%>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="./secciones/forms/registrarUsuario.html">Registro de usuario</a>
+                            <a class="nav-link" href="./cerrarSesion">Cerrar sesión</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./secciones/forms/login.html">Iniciar Sesion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./secciones/forms/insertarConvocatoria.jsp">Registrar convocatoria</a>
-                        </li>
-                        <%--}--%>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./secciones/resp/listarConvocatorias.jsp">Listar convocatorias</a>
-                        </li>
-                    </ul>
+
+                        <%} else {%>
+
+                        <a class="navbar-brand" href="./">Menu convocatorias</a>
+                        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarResponsive">
+                            <ul class="navbar-nav ml-auto">
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./secciones/forms/registrarUsuario.html">Registro de usuario</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./secciones/forms/login.html">Iniciar Sesion</a>
+                                </li>
+                                <%
+                                        }
+                                    }
+                                %>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./secciones/forms/insertarConvocatoria.jsp">Registrar convocatoria</a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./secciones/resp/listarConvocatorias.jsp">Listar convocatorias</a>
+                                </li>
+                            </ul>
+                        </div>
                 </div>
-            </div>
         </nav>
 
         <header>

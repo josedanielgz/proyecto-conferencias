@@ -10,6 +10,7 @@ import facade.Facade;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -64,13 +65,11 @@ public class iniciarSesion extends HttpServlet {
         String clave = request.getParameter("clave");
         Boolean es_admin = Boolean.valueOf(request.getParameter("es_admin"));
         HttpSession sesion = request.getSession();
-        
+
 //        PURO DEBUG
 //        msj = msj + es_admin.toString();
 //        request.setAttribute("error", msj);
 //        request.getRequestDispatcher("secciones/resp/error.jsp").forward(request, response);
-
-        
         PasswordManager pm = new PasswordManager();
         Facade f = new Facade();
 
@@ -79,8 +78,6 @@ public class iniciarSesion extends HttpServlet {
             if (es_admin) {
                 if (f.esUnAdministrador(documento)) {
                     msj = msj + "Sesión iniciada como administrador.";
-                    request.setAttribute("msj", msj);
-                    request.getRequestDispatcher("secciones/resp/exito.jsp").forward(request, response);
                 } else {
                     msj = msj + " Pero este usuario no tiene permisos de administrador";
                     request.setAttribute("error", msj);
@@ -88,16 +85,23 @@ public class iniciarSesion extends HttpServlet {
                 }
             } else {
                 msj = msj + "Sesión iniciada correctamente.";
-                request.setAttribute("msj", msj);
-                request.getRequestDispatcher("secciones/resp/exito.jsp").forward(request, response);
             }
+            request.setAttribute("msj", msj);
+            sesion.setAttribute("documento", documento);
+            sesion.setMaxInactiveInterval(30 * 60);
+
+            Cookie cookieUsuario = new Cookie("documento", documento.toString());
+            cookieUsuario.setMaxAge(30 * 60);
+            response.addCookie(cookieUsuario);
+
+            request.getRequestDispatcher("secciones/resp/perfil.jsp").include(request, response);
 
         } else {
             msj = "Inicio de sesión fallido, verifique las credenciales e intente otra vez";
             request.setAttribute("error", msj);
             request.getRequestDispatcher("secciones/resp/error.jsp").forward(request, response);
         };
-         
+
     }
 
     /**

@@ -49,7 +49,7 @@ function iniciarSesion(e) {
     var usuario = document.getElementById("usuario").value;
     var clave = document.getElementById("clave").value;
     var es_admin = document.getElementById("es_admin").checked;
-    console.log("usuario=" + usuario + "&clave=" + clave + "&es_admin=" + es_admin);
+//    console.log("usuario=" + usuario + "&clave=" + clave + "&es_admin=" + es_admin);
     
     var req;
 
@@ -65,7 +65,9 @@ function iniciarSesion(e) {
         if ((req.readyState === 4) && (req.status === 200)) {
             //Puro debug
             //console.log("Sirvió existosamente");
-            document.getElementById("resultado").innerHTML = req.responseText;
+            //document.getElementById("resultado").innerHTML = req.responseText;
+            alert("Inicio de sesión exitoso");
+            window.location.replace("../..");
         }
     };
 
