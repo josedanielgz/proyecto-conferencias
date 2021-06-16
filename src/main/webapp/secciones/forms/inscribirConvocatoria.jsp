@@ -1,7 +1,24 @@
+<%-- 
+    Document   : inscribirConvocatoria
+    Created on : 16/06/2021, 05:11:31 PM
+    Author     : anyusername
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-FORMULARIO PROVISIONAL PARA INSCRIBIR UN USUARIO EN UNA CONVOCATORIA. 
--->
+<%
+    HttpSession sesion = request.getSession(false);
+
+    if (sesion == null || (sesion.getAttribute("documento") == null)) {
+
+        request.getRequestDispatcher("../../index.jsp").forward(request, response);
+
+    } else {
+
+        Integer s = (Integer) sesion.getAttribute("documento");
+
+%>
+
 <html>
     <head>
         <title>Inscríbete en una convocatoria</title>
@@ -19,7 +36,7 @@ FORMULARIO PROVISIONAL PARA INSCRIBIR UN USUARIO EN UNA CONVOCATORIA.
 
             <div class="container">
 
-                <a class="navbar-brand" href="../../">Menu Convocatoria</a>
+                <a class="navbar-brand" href="../../">Usuario <%=s%></a>
 
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -28,23 +45,29 @@ FORMULARIO PROVISIONAL PARA INSCRIBIR UN USUARIO EN UNA CONVOCATORIA.
                 <div class="collapse navbar-collapse" id="navbarResponsive">
 
                     <ul class="navbar-nav ml-auto">
+
                         <li class="nav-item">
-                            <a class="nav-link" href="../../secciones/forms/inscribirConvocatoria.html">Inscribirse en convocatoria</a>
+                            <a class="nav-link" href="secciones/resp/listarInscripciones.jsp">Inscripciones disponibles</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="window.location.reload(false)">Registro de usuario</a>
+                            <a class="nav-link" href="./cerrarSesion">Cerrar sesión</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="../../secciones/forms/login.html">Iniciar sesion</a>
+                            <a class="nav-link" href="./secciones/resp/listarConvocatorias.jsp">Listar convocatorias</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../secciones/resp/listarConvocatorias.jsp">Listar convocatorias</a>
-                        </li>
+
                     </ul>
 
                 </div>
+
             </div>
+
         </nav>
+
+        <%}%>
+
         <div class="container">
             <h1>Inscripción en una convocatoria</h1>
             <!--https://stackoverflow.com/a/3350351-->

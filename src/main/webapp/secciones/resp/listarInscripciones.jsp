@@ -49,18 +49,18 @@
                     <ul class="navbar-nav ml-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="./secciones/forms/inscribirConvocatoria.html">Inscribirse en convocatoria</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/secciones/forms/inscribirConvocatoria.html">Inscribirse en convocatoria</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="secciones/resp/listarInscripciones.jsp">Inscripciones disponibles</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="./cerrarSesion">Cerrar sesión</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/secciones/resp/listarInscripciones.jsp">Inscripciones disponibles</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="./secciones/resp/listarConvocatorias.jsp">Listar convocatorias</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/cerrarSesion">Cerrar sesión</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/secciones/resp/listarConvocatorias.jsp">Listar convocatorias</a>
                         </li>
 
                     </ul>
@@ -93,7 +93,7 @@
                         <td><%=c.getFecha_inscripcion()%></td>
                         <td><%=c.getDocumento()%></td>
                         <td><%=c.getConvocatoria()%></td>
-                        <td><a onclick="alert('En progreso');"><%=c.getNombre_archivo()%></a></td>
+                        <td><a href="#" id="<%=c.getDocumento()%>-<%=c.getConvocatoria()%>" onclick="descargarArchivoSeleccionado(event);"><%=c.getNombre_archivo()%></a></td>
 
                     </tr>
                     <%

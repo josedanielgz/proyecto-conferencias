@@ -43,7 +43,7 @@
                     <ul class="navbar-nav ml-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="./secciones/forms/inscribirConvocatoria.html">Inscribirse en convocatoria</a>
+                            <a class="nav-link" href="./secciones/forms/inscribirConvocatoria.jsp">Inscribirse en convocatoria</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="secciones/resp/listarInscripciones.jsp">Inscripciones disponibles</a>

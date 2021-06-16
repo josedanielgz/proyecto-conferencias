@@ -65,8 +65,8 @@ function iniciarSesion(e) {
         if ((req.readyState === 4) && (req.status === 200)) {
             //Puro debug
             //console.log("Sirvió existosamente");
-            //document.getElementById("resultado").innerHTML = req.responseText;
-            alert("Inicio de sesión exitoso");
+            var jsonObj = JSON.parse(req.responseText);
+            alert(jsonObj.msj);
             window.location.replace("../..");
         }
     };

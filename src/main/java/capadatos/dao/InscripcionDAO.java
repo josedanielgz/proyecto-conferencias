@@ -156,11 +156,9 @@ public class InscripcionDAO {
         ResultSet rs = ps.getResultSet();
 
         if (rs.next()) {
-            rs.beforeFirst();
-            while (rs.next()) {
                 i.setNombre_archivo(rs.getString(1));
                 i.setArhivo(rs.getBytes(2));
-            }
+            
         } else {
             return null;
         }
