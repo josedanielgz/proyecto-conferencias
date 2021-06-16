@@ -9,16 +9,66 @@ and open the template in the editor.
         <title>Registro de usuario</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../../vendor/jquery/jquery.min.js"></script>
+
+        <link href="../../vendor/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../js/ajax/usuario.js"></script>
     </head>
     <body>
-        <h1>Registrate para inscribirte en una convocatoria</h1>
-        <form action="../registrarUsuario" method="post">
-            <label>Código: </label><input type="number" name="documento">
-            <label>Primer nombre: </label><input type="text" name="primer_nombre"><br>
-            <label>Primer apellido: </label><input type="text" name="primer_apellido"><br>
-            <label>Fecha de nacimiento: </label><input type="date" name="fecha_nacimiento">
-            <input type="submit" value="Registrar usuario">
-        </form>
-        <a href="../../">Volver al inicio</a>
+
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+            <div class="container">
+
+                <a class="navbar-brand" href="../../">Menu Convocatoria</a>
+
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../secciones/forms/inscribirConvocatoria.html">Inscribirse en convocatoria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="window.location.reload(false)">Registro de usuario</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../secciones/forms/login.html">Iniciar sesion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../secciones/resp/listarConvocatorias.jsp">Listar convocatorias</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <h1>Registrate para inscribirte en una convocatoria</h1>
+            <form onsubmit="registrar(event)" method="post">
+                <div class="form-group">
+                    <label>Código: </label><input class="form-control" type="number" id="documento">
+                    <label>Primer nombre: </label><input class="form-control" type="text" id="primer_nombre"><br>
+                    <label>Primer apellido: </label><input class="form-control" type="text" id="primer_apellido"><br>
+                    <label>Fecha de nacimiento: </label><input class="form-control" type="date" id="fecha_nacimiento">
+                    <label>Correo electrónico: </label><input class="form-control" type="email" id="correo">
+                    <label>Clave de acceso: </label><input class="form-control" type="password" id="clave">
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="es_admin"><label>Es un administrador</label>
+                </div>
+                <button class="btn btn-primary" type="submit">Registrar usuario</button>
+            </form>
+        </div>
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white">Grupo 9. 2021</p>
+            </div>
+        </footer>
     </body>
 </html>

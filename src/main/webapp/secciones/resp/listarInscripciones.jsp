@@ -11,19 +11,69 @@
 <!DOCTYPE html>
 <jsp:useBean id="facade" class="facade.Facade" scope="page"></jsp:useBean>
 <%
-    List<Inscripcion> inscripciones = facade.buscarInscripciones();
+    HttpSession sesion = request.getSession(false);
+
+    if (sesion == null || (sesion.getAttribute("documento") == null)) {
+
+        request.getRequestDispatcher("../../index.jsp").forward(request, response);
+
+    } else {
+
+        List<Inscripcion> inscripciones = facade.buscarInscripciones();
+        Integer s = (Integer) sesion.getAttribute("documento");
 %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Revisión de inscripciones vigentes</title>
+
+        <script src="../../vendor/jquery/jquery.min.js"></script>
+
+        <link href="../../vendor/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+
         <script src="../../js/ajax/inscripcion.js"></script>
+
     </head>
     <body>
-        <h1>Lista de inscripciones a la fecha <%=LocalDate.now()%></h1>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+            <div class="container">
+
+                <a class="navbar-brand" href="${pageContext.request.contextPath}">Usuario <%=s%></a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="./secciones/forms/inscribirConvocatoria.html">Inscribirse en convocatoria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="secciones/resp/listarInscripciones.jsp">Inscripciones disponibles</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="./cerrarSesion">Cerrar sesión</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="./secciones/resp/listarConvocatorias.jsp">Listar convocatorias</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+        <h1>Lista de inscripciones a la fecha <%=LocalDate.now()%> para el Usuario</h1>
 
         <div class="container">
-            <%=inscripciones%>
             <table class="table table-stripped">
                 <thead>
                     <tr>
@@ -34,9 +84,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <%--
-                    <%
 
+                    <%
                         for (Inscripcion c : inscripciones) {
                     %>
 
@@ -48,12 +97,12 @@
 
                     </tr>
                     <%
+                            }
                         }
                     %>
-                    --%>
 
                 </tbody>
             </table>
-
+        </div>
     </body>
 </html>

@@ -25,6 +25,9 @@ public class Usuario {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate fecha_nacimiento;
 
+    private String correo_electronico;
+    private String clave_acceso;
+    
     public Usuario() {
         super();
     }
@@ -34,6 +37,7 @@ public class Usuario {
         this.primer_nombre = primer_nombre;
         this.primer_apellido = primer_apellido;
         this.fecha_nacimiento = fecha_nacimiento;
+        this.clave_acceso = "";
     }
 
     public Integer getDocumento() {
@@ -68,33 +72,39 @@ public class Usuario {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + Objects.hashCode(this.documento);
-        return hash;
+    public String getCorreo_electronico() {
+        return correo_electronico;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Usuario other = (Usuario) obj;
-        if (!Objects.equals(this.documento, other.documento)) {
-            return false;
-        }
-        return true;
+    public void setCorreo_electronico(String correo_electronico) {
+        this.correo_electronico = correo_electronico;
+    }
+    
+    public String getClave_acceso() {
+        return clave_acceso;
+    }
+
+    public void setClave_acceso(String clave_acceso) {
+        this.clave_acceso = clave_acceso;
     }
     
     public boolean isNull(){
     
         return this.documento==null;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Usuario{documento=").append(documento);
+        sb.append(", primer_nombre=").append(primer_nombre);
+        sb.append(", primer_apellido=").append(primer_apellido);
+        sb.append(", fecha_nacimiento=").append(fecha_nacimiento);
+        sb.append(", correo_electronico=").append(correo_electronico);
+        sb.append(", clave_acceso=").append(clave_acceso);
+        sb.append('}');
+        return sb.toString();
+    }
+    
+    
 }
