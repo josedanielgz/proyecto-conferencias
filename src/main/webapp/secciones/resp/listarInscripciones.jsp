@@ -26,6 +26,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Revisión de inscripciones vigentes</title>
+        <link href='https://ww2.ufps.edu.co/assets/img/ico/favicon.ico' rel='Shortcut icon'>
 
         <script src="../../vendor/jquery/jquery.min.js"></script>
 

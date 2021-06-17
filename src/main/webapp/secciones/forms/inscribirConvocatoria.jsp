@@ -13,17 +13,21 @@
 
         request.getRequestDispatcher("../../index.jsp").forward(request, response);
 
-    } else {
+    }
 
-        Integer s = (Integer) sesion.getAttribute("documento");
+    Integer s = (Integer) sesion.getAttribute("documento");
+
 
 %>
 
 <html>
     <head>
-        <title>Inscríbete en una convocatoria</title>
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inscríbete en una convocatoria</title>
+        <link href='https://ww2.ufps.edu.co/assets/img/ico/favicon.ico' rel='Shortcut icon'>
+
         <script src="../../vendor/jquery/jquery.min.js"></script>
         <link href="../../vendor/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
         <script type="text/javascript" src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -47,15 +51,15 @@
                     <ul class="navbar-nav ml-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="secciones/resp/listarInscripciones.jsp">Inscripciones disponibles</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/secciones/resp/listarInscripciones.jsp">Inscripciones disponibles</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="./cerrarSesion">Cerrar sesión</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/cerrarSesion">Cerrar sesión</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="./secciones/resp/listarConvocatorias.jsp">Listar convocatorias</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/secciones/resp/listarConvocatorias.jsp">Listar convocatorias</a>
                         </li>
 
                     </ul>
@@ -66,15 +70,13 @@
 
         </nav>
 
-        <%}%>
-
         <div class="container">
             <h1>Inscripción en una convocatoria</h1>
             <!--https://stackoverflow.com/a/3350351-->
             <!--La petición AJAX se realiza mediante una llamada a una función JS que sobreescribe el evento convencional de los formularios-->
             <form id="subir_archivo" enctype="multipart/form-data" method="post" onsubmit="inscripcionConvocatoria(event)">
                 <div class="form-group">
-                    <label>Usuario: </label><input class="form-control" type="number" id="documento"><br>
+                    <label>Usuario: </label><input class="form-control" type="number" value="<%=s%>" id="documento" readonly="readonly"><br>
                     <label>Convocatoria: </label><input class="form-control" type="text" id="convocatoria"><br>
                     <input class="form-control" id="ajaxfile" type="file"/> <br><br>
                     <button class="btn btn-primary" type="submit">Registrar inscripción</button>

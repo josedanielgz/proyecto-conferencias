@@ -15,6 +15,8 @@
         <meta name="author" content="">
 
         <title>Convocatorias UFPS</title>
+
+        <link href='https://ww2.ufps.edu.co/assets/img/ico/favicon.ico' rel='Shortcut icon'>
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="css/modern-business.css" rel="stylesheet">
     </head>
@@ -68,16 +70,17 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="./secciones/forms/login.html">Iniciar Sesion</a>
+                                </li>                                
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./secciones/forms/insertarConvocatoria.jsp">Registrar convocatoria</a>
                                 </li>
+
                                 <%
                                         }
                                     }
                                 %>
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="./secciones/forms/insertarConvocatoria.jsp">Registrar convocatoria</a>
-                                </li>
-                                
                                 <li class="nav-item">
                                     <a class="nav-link" href="./secciones/resp/listarConvocatorias.jsp">Listar convocatorias</a>
                                 </li>
