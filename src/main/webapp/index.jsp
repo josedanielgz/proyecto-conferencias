@@ -15,6 +15,8 @@
         <meta name="author" content="">
 
         <title>Convocatorias UFPS</title>
+
+        <link href='https://ww2.ufps.edu.co/assets/img/ico/favicon.ico' rel='Shortcut icon'>
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="css/modern-business.css" rel="stylesheet">
     </head>
@@ -43,7 +45,7 @@
                     <ul class="navbar-nav ml-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="./secciones/forms/inscribirConvocatoria.html">Inscribirse en convocatoria</a>
+                            <a class="nav-link" href="./secciones/forms/inscribirConvocatoria.jsp">Inscribirse en convocatoria</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="secciones/resp/listarInscripciones.jsp">Inscripciones disponibles</a>
@@ -68,16 +70,17 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="./secciones/forms/login.html">Iniciar Sesion</a>
+                                </li>                                
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./secciones/forms/insertarConvocatoria.jsp">Registrar convocatoria</a>
                                 </li>
+
                                 <%
                                         }
                                     }
                                 %>
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="./secciones/forms/insertarConvocatoria.jsp">Registrar convocatoria</a>
-                                </li>
-                                
                                 <li class="nav-item">
                                     <a class="nav-link" href="./secciones/resp/listarConvocatorias.jsp">Listar convocatorias</a>
                                 </li>

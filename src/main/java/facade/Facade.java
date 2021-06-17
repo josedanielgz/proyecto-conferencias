@@ -66,8 +66,8 @@ public class Facade {
     public static void main(String[] args) {
 
         Facade a = new Facade();
-
-        System.out.println(a.buscarConvocatorias());
+        System.out.println(a.devolverArchivo(4, "3"));
+//        System.out.println(a.inicioDeSesion(9,"123456"));
 
     }
 }

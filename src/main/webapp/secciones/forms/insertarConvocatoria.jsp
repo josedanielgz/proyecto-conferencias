@@ -5,6 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registrar Convocatoria</title>
+        <link href='https://ww2.ufps.edu.co/assets/img/ico/favicon.ico' rel='Shortcut icon'>
 
         <!-- JQuery -->
         <script type="text/javascript" src="../../vendor/jquery/jquery.min.js"></script>

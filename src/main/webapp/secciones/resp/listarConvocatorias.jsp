@@ -16,6 +16,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listar Convocatorias</title>
+        <link href='https://ww2.ufps.edu.co/assets/img/ico/favicon.ico' rel='Shortcut icon'>
 
         <!--
         <link href="../../css/dataTable/jquery.dataTables.min.css" type="text/css" rel="stylesheet">

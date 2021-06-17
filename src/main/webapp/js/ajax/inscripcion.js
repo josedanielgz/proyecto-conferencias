@@ -4,10 +4,18 @@
  * and open the template in the editor.
  */
 
-function descargarArchivo(e) {
+function descargarArchivoSeleccionado(e) {
+
     e.preventDefault();
-    string1 = document.getElementById("documento").value;
-    string2 = document.getElementById("convocatoria").value;
+
+    // El elemento que disparó el evento recibido
+    var elemento = e.target;
+    var id = elemento.id;
+
+    var array = id.split("-");
+    //console.log(array[0]+array[1]);
+    string1 = array[0];
+    string2 = array[1];
 
     var req;
 
@@ -20,6 +28,7 @@ function descargarArchivo(e) {
     }
 
     req.responseType = "blob";
+
     req.onload = function (event) {
 
         //Para debuggear
@@ -40,7 +49,6 @@ function descargarArchivo(e) {
             document.getElementById("resultado").innerHTML = "Hubo un error";
 
         }
-
 
     };
 

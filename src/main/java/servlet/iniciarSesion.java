@@ -5,7 +5,8 @@
  */
 package servlet;
 
-import capadatos.PasswordManager;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import facade.Facade;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -60,7 +61,13 @@ public class iniciarSesion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        response.setContentType("application/json;charset=UTF-8");
+        PrintWriter writer = response.getWriter();
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode resp = mapper.createObjectNode();
         String msj = "";
+
         Integer documento = Integer.parseInt(request.getParameter("usuario"));
         String clave = request.getParameter("clave");
         Boolean es_admin = Boolean.valueOf(request.getParameter("es_admin"));
@@ -70,37 +77,54 @@ public class iniciarSesion extends HttpServlet {
 //        msj = msj + es_admin.toString();
 //        request.setAttribute("error", msj);
 //        request.getRequestDispatcher("secciones/resp/error.jsp").forward(request, response);
-        PasswordManager pm = new PasswordManager();
         Facade f = new Facade();
 
         if (f.inicioDeSesion(documento, clave)) {
+
             msj = "Credenciales validadas.";
+
             if (es_admin) {
+                
                 if (f.esUnAdministrador(documento)) {
+                    
                     msj = msj + "Sesión iniciada como administrador.";
+
+                    sesion.setAttribute("documento", documento);
+                    sesion.setMaxInactiveInterval(30 * 60);
+
+                    Cookie cookieUsuario = new Cookie("documento", documento.toString());
+                    cookieUsuario.setMaxAge(30 * 60);
+                    response.addCookie(cookieUsuario);
+
                 } else {
+                    
                     msj = msj + " Pero este usuario no tiene permisos de administrador";
-                    request.setAttribute("error", msj);
-                    request.getRequestDispatcher("secciones/resp/error.jsp").forward(request, response);
+//                    request.setAttribute("error", msj);
+//                    request.getRequestDispatcher("secciones/resp/error.jsp").forward(request, response);
                 }
             } else {
+                
                 msj = msj + "Sesión iniciada correctamente.";
+
+                sesion.setAttribute("documento", documento);
+                sesion.setMaxInactiveInterval(30 * 60);
+
+                Cookie cookieUsuario = new Cookie("documento", documento.toString());
+                cookieUsuario.setMaxAge(30 * 60);
+                response.addCookie(cookieUsuario);
             }
-            request.setAttribute("msj", msj);
-            sesion.setAttribute("documento", documento);
-            sesion.setMaxInactiveInterval(30 * 60);
-
-            Cookie cookieUsuario = new Cookie("documento", documento.toString());
-            cookieUsuario.setMaxAge(30 * 60);
-            response.addCookie(cookieUsuario);
-
-            request.getRequestDispatcher("secciones/resp/perfil.jsp").include(request, response);
-
+//            request.setAttribute("msj", msj);
+//            request.getRequestDispatcher("secciones/resp/perfil.jsp").include(request, response);
         } else {
+            
             msj = "Inicio de sesión fallido, verifique las credenciales e intente otra vez";
-            request.setAttribute("error", msj);
-            request.getRequestDispatcher("secciones/resp/error.jsp").forward(request, response);
-        };
+//            request.setAttribute("error", msj);
+//            request.getRequestDispatcher("secciones/resp/error.jsp").forward(request, response);
+        }
+
+        resp.put("msj", msj);
+        String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(resp);
+        writer.write(json);
 
     }
 
